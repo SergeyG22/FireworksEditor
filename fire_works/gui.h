@@ -20,3 +20,17 @@ public:
 	void set_fractions_text(std::string str_fractions) { fractions_text.setString("Parcticle = "+str_fractions); }
 	void set_fireworks_text(std::string str_fireworks) { fireworks_text.setString("Fireworks = "+str_fireworks); }
 };
+
+class Window_dialog:public sf::Drawable {
+	sf::Sprite sprite_button_accept;
+	sf::Sprite sprite_button_cancel;
+	sf::Sprite sprite_button_exit;
+	sf::Sprite sprite_dialog_window;
+	sf::Texture texture_button_accept;
+	sf::Texture texture_button_cancel;
+	sf::Texture texture_button_exit;
+	sf::Texture texture_dialog_window;
+public:
+	Window_dialog();
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+};

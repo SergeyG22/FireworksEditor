@@ -36,6 +36,7 @@ int main()
     fireworks.push_back(new Flow_fractions(&fractions));
     Background background;
     Display_text display_text;
+    Window_dialog window_dialog;
 
     while (window.isOpen())
     {
@@ -132,6 +133,7 @@ int main()
             event_timer.restart();
         }  
         window.draw(display_text);
+        window.draw(window_dialog);
         display_text.set_fractions_text(std::to_string(fractions.size()));
         display_text.set_fireworks_text(std::to_string(fireworks.size()));
         display_text.set_fps_text(std::to_string(fps));
