@@ -40,3 +40,8 @@ public:
     bool generate_explosion();
 };
 
+struct Fireball {
+    sf::CircleShape fireball_shape;
+    Fireball();
+};
+

@@ -33,13 +33,15 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,sf::RenderWindow
     sf::Vector2f mouse_position;
     mouse_position.x = sf::Mouse::getPosition(window).x;
     mouse_position.y = sf::Mouse::getPosition(window).y;
-    flow_fractions_positions = mouse_position;
-    flow_fractions_velocity = sf::Vector2f(number_generator(1,5), number_generator(3,8) * (-1));
-    if (flow_fractions_positions.x >= 400)
-        flow_fractions_velocity.x = flow_fractions_velocity.x * (-1);
-    tact = 0;
-    list_fractions= fractions;
-    return;
+     
+    if ((mouse_position.y < 1180 && mouse_position.x > 250)|| (mouse_position.x<250 && mouse_position.y<840 )) {  //range to avoid starting fireworks when you click open close
+        flow_fractions_positions = mouse_position;
+        flow_fractions_velocity = sf::Vector2f(number_generator(1, 5), number_generator(3, 8) * (-1));
+        if (flow_fractions_positions.x >= 400)
+            flow_fractions_velocity.x = flow_fractions_velocity.x * (-1);
+        tact = 0;
+        list_fractions = fractions;
+    }
 };
 
 Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions) {
@@ -92,19 +94,6 @@ Explosion::Explosion(sf::Vector2f position, sf::Color color,int dislocation ) {
     tact = 0;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 bool Explosion::generate_explosion()
 {
     if (explosion_color.a - explosion_alpha <= 0 || tact >= 50) {
@@ -118,3 +107,7 @@ bool Explosion::generate_explosion()
     tact++;
     return true;
 };
+
+Fireball::Fireball() {
+    fireball_shape.setRadius(3.0);
+}
