@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <TGUI/TGUI.hpp>
 #include <list>
 #include <iostream>
 #include "fireworks.h"
@@ -9,7 +10,7 @@ extern double number_generator(int, int);
 const int time_scene = 20;
 int fps = 0;
 sf::Color color[] = { sf::Color::Red, sf::Color::Green, sf::Color::Blue, sf::Color::Magenta, sf::Color::Cyan, 
-                      sf::Color::Yellow,sf::Color::Blue,sf::Color::White};
+                      sf::Color::Yellow, sf::Color::White};
 
 
 void get_fps(sf::Clock& clock) {
@@ -26,11 +27,13 @@ sf::Vector2f get_mouse_coordinate(sf::RenderWindow& window) {
 
 struct ObjectsEntities {
     sf::RenderWindow window{ sf::VideoMode(1280, 1024), "Fireworks" };
+    tgui::GuiSFML GUI{ window };
     Background background;
     Display_text display_text;
     Window_dialog window_dialog;
     Fireball fireball;
     GraphicalDesktopElements graphical_elements;
+    Combo_box_color combo_box_color{ GUI };
 };
 
 
@@ -52,6 +55,7 @@ int main()
         sf::Event event;
         while (objects_entities.window.pollEvent(event))
         {
+            objects_entities.GUI.handleEvent(event);
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.key.code == sf::Mouse::Left) {                   
                     fireworks.push_back(new Flow_fractions(&fractions, objects_entities.window));
@@ -107,10 +111,6 @@ int main()
                 }
             }
             
-
-
-
-
             if (event.type == sf::Event::Closed) {
                 objects_entities.window.close();
             }
@@ -175,7 +175,7 @@ int main()
                 }
             }     
 
-            sf::Color current_color = color[static_cast<int>(number_generator(1,8))];
+            sf::Color current_color = color[static_cast<int>(number_generator(1,7))];
             for (int i = 1; i < static_cast<int>(number_generator(1, 10)); i++) {
                 for (const auto& it : explosions) {
                     objects_entities.fireball.fireball_shape.setFillColor(current_color);
@@ -189,7 +189,9 @@ int main()
             
             event_timer.restart();
         }
+       
         objects_entities.window.draw(objects_entities.graphical_elements);
+        objects_entities.GUI.draw();
         objects_entities.window.draw(objects_entities.display_text);
         objects_entities.window.draw(objects_entities.window_dialog);
         objects_entities.display_text.set_fractions_text(std::to_string(fractions.size()));

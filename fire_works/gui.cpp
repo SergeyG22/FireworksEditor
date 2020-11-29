@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+//#include <TGUI/TGUI.hpp>
 #include <iostream>
 #include "gui.h"
 
@@ -93,4 +94,22 @@ void GraphicalDesktopElements::draw(sf::RenderTarget& target, sf::RenderStates s
 	if (change_state) {
 		target.draw(sprite_background, states);
 	}
+}
+
+
+Combo_box_color::Combo_box_color(tgui::GuiSFML&GUI) {
+	combo_box_color = tgui::ComboBox::create();
+	combo_box_color->setRenderer(theme.getRenderer("ComboBox"));
+	combo_box_color->setTextSize(20);
+	combo_box_color->setSize(width_combo_box_color, height_combo_box_color);
+	combo_box_color->setPosition(pos_x_combo_box_color, pos_y_combo_box_color);
+	combo_box_color->addItem(L"Красный","1");
+	combo_box_color->addItem(L"Зеленый", "2");
+	combo_box_color->addItem(L"Пурпурный", "3");
+	combo_box_color->addItem(L"Бирюзовый", "4");
+	combo_box_color->addItem(L"Желтый", "5");
+	combo_box_color->addItem(L"Белый", "6");
+	combo_box_color->addItem(L"Случайный","7");
+	combo_box_color->setSelectedItem(L"Случайный");
+	GUI.add(combo_box_color);
 }

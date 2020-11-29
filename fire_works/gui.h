@@ -1,4 +1,5 @@
 #pragma once
+#include <TGUI/TGUI.hpp>
 
 class Background: public sf::Drawable {
 	sf::Sprite background_sprite;
@@ -58,4 +59,15 @@ public:
 	bool get_state_window() { return open_window; }
 	void set_state_window(bool state) { open_window = state; }
 	void show_window_of_widgets(bool state) { change_state = state; }
+};
+
+
+struct Combo_box_color{
+	tgui::ComboBox::Ptr combo_box_color;
+	tgui::Layout width_combo_box_color = 280;
+	tgui::Layout height_combo_box_color = 31;
+	tgui::Layout pos_x_combo_box_color = 53;
+	tgui::Layout pos_y_combo_box_color = 260;
+	tgui::Theme theme{ "themes/Black.txt" };
+	Combo_box_color(tgui::GuiSFML&);
 };
