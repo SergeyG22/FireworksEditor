@@ -4,6 +4,7 @@
 #include <iostream>
 #include "fireworks.h"
 #include "number_generator.h"
+#include "gui.h"
 
 extern double number_generator(int,int);
 const int width_window = 1024;
@@ -32,16 +33,14 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,sf::RenderWindow
     flow_fractions_color = sf::Color(number_generator(0,256), number_generator(0, 256), number_generator(0, 256));
     sf::Vector2f mouse_position;
     mouse_position.x = sf::Mouse::getPosition(window).x;
-    mouse_position.y = sf::Mouse::getPosition(window).y;
-     
-    if ((mouse_position.y < 1180 && mouse_position.x > 250)|| (mouse_position.x<250 && mouse_position.y<840 )) {  //range to avoid starting fireworks when you click open close
-        flow_fractions_positions = mouse_position;
-        flow_fractions_velocity = sf::Vector2f(number_generator(1, 5), number_generator(3, 8) * (-1));
-        if (flow_fractions_positions.x >= 400)
-            flow_fractions_velocity.x = flow_fractions_velocity.x * (-1);
-        tact = 0;
-        list_fractions = fractions;
-    }
+    mouse_position.y = sf::Mouse::getPosition(window).y;    
+    flow_fractions_positions = mouse_position;
+    flow_fractions_velocity = sf::Vector2f(number_generator(1, 5), number_generator(3, 8) * (-1));
+    if (flow_fractions_positions.x >= 400)
+                flow_fractions_velocity.x = flow_fractions_velocity.x * (-1);
+    tact = 0;
+    list_fractions = fractions;
+       
 };
 
 Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions) {
@@ -62,7 +61,7 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions) {
 
 bool Flow_fractions::generate_flow() {
     flow_fractions_positions = flow_fractions_positions + flow_fractions_velocity;
-    int number_fractions = 25;
+    int number_fractions = 5;
     for (int y = 0; y < flow_fractions_velocity.y * (-1); ++y)
         for ( int i = 0; i < number_fractions; ++i)
             list_fractions->push_back(new Fractions(sf::Vector2f(get_position().x, get_position().y + y), get_color()));

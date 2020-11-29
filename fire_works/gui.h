@@ -71,3 +71,33 @@ struct Combo_box_color{
 	tgui::Theme theme{ "themes/Black.txt" };
 	Combo_box_color(tgui::GuiSFML&);
 };
+
+struct Combo_box_number_of_fireworks{
+	tgui::ComboBox::Ptr combo_box_number_of_fireworks;
+	tgui::Layout width_combo_box_number_of_fireworks = 280;
+	tgui::Layout height_combo_box_number_of_fireworks = 31;
+	tgui::Layout pos_x_combo_box_number_of_fireworks = 53;
+	tgui::Layout pos_y_combo_box_number_of_fireworks = 310;
+	tgui::Theme theme{ "themes/Black.txt" };
+	Combo_box_number_of_fireworks(tgui::GuiSFML&);
+};
+
+struct Slider_number_of_lights {
+	tgui::Slider::Ptr slider_number_of_lights;
+	tgui::Layout width_number_of_lights = 250;
+	tgui::Layout height_number_of_lights = 15;
+	tgui::Layout pos_x_number_of_lights = 70;
+	tgui::Layout pos_y_number_of_lights = 380;
+	tgui::Theme theme{ "themes/Black.txt" };
+	Slider_number_of_lights(tgui::GuiSFML&);
+};
+
+struct Slider_number_of_particles {
+	tgui::Slider::Ptr slider_number_of_particles;
+	tgui::Layout width_number_of_particles = 250;
+	tgui::Layout height_number_of_particles = 15;
+	tgui::Layout pos_x_number_of_particles = 70;
+	tgui::Layout pos_y_number_of_particles = 430;
+	tgui::Theme theme{ "themes/Black.txt" };
+	Slider_number_of_particles(tgui::GuiSFML&);
+};

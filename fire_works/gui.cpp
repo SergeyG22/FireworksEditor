@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-//#include <TGUI/TGUI.hpp>
 #include <iostream>
 #include "gui.h"
 
@@ -103,13 +102,54 @@ Combo_box_color::Combo_box_color(tgui::GuiSFML&GUI) {
 	combo_box_color->setTextSize(20);
 	combo_box_color->setSize(width_combo_box_color, height_combo_box_color);
 	combo_box_color->setPosition(pos_x_combo_box_color, pos_y_combo_box_color);
-	combo_box_color->addItem(L"Красный","1");
-	combo_box_color->addItem(L"Зеленый", "2");
-	combo_box_color->addItem(L"Пурпурный", "3");
-	combo_box_color->addItem(L"Бирюзовый", "4");
-	combo_box_color->addItem(L"Желтый", "5");
-	combo_box_color->addItem(L"Белый", "6");
-	combo_box_color->addItem(L"Случайный","7");
-	combo_box_color->setSelectedItem(L"Случайный");
+	combo_box_color->setVisible(false);
+	combo_box_color->addItem(L"красный","1");
+	combo_box_color->addItem(L"зеленый", "2");
+	combo_box_color->addItem(L"пурпурный", "3");
+	combo_box_color->addItem(L"бирюзовый", "4");
+	combo_box_color->addItem(L"желтый", "5");
+	combo_box_color->addItem(L"белый", "6");
+	combo_box_color->addItem(L"случайный","7");
+	combo_box_color->setSelectedItem(L"случайный");
 	GUI.add(combo_box_color);
+}
+
+Combo_box_number_of_fireworks::Combo_box_number_of_fireworks(tgui::GuiSFML& GUI) {
+	combo_box_number_of_fireworks = tgui::ComboBox::create();
+	combo_box_number_of_fireworks->setRenderer(theme.getRenderer("ComboBox"));
+	combo_box_number_of_fireworks->setTextSize(20);
+	combo_box_number_of_fireworks->setSize(width_combo_box_number_of_fireworks, height_combo_box_number_of_fireworks);
+	combo_box_number_of_fireworks->setPosition(pos_x_combo_box_number_of_fireworks, pos_y_combo_box_number_of_fireworks);
+	combo_box_number_of_fireworks->setVisible(false);
+	combo_box_number_of_fireworks->addItem(L"один фейрверк", "1");
+	combo_box_number_of_fireworks->addItem(L"два фейрверка", "2");
+	combo_box_number_of_fireworks->addItem(L"три фейрверка", "3");
+	combo_box_number_of_fireworks->addItem(L"четыре фейрверка", "4");
+	combo_box_number_of_fireworks->addItem(L"пять фейрверков", "5");
+	combo_box_number_of_fireworks->setSelectedItem(L"один фейрверк");
+	GUI.add(combo_box_number_of_fireworks);
+}
+
+Slider_number_of_lights::Slider_number_of_lights(tgui::GuiSFML& GUI) {
+	slider_number_of_lights = tgui::Slider::create();
+	slider_number_of_lights->setRenderer(theme.getRenderer("Slider"));
+	slider_number_of_lights->setVisible(false);
+	slider_number_of_lights->setSize(width_number_of_lights, height_number_of_lights);
+	slider_number_of_lights->setPosition(pos_x_number_of_lights, pos_y_number_of_lights);
+	slider_number_of_lights->setMinimum(1);
+	slider_number_of_lights->setMaximum(20);
+	slider_number_of_lights->setStep(1);
+	GUI.add(slider_number_of_lights);
+}
+
+Slider_number_of_particles::Slider_number_of_particles(tgui::GuiSFML& GUI) {
+	slider_number_of_particles = tgui::Slider::create();
+	slider_number_of_particles->setRenderer(theme.getRenderer("Slider"));
+	slider_number_of_particles->setVisible(false);
+	slider_number_of_particles->setSize(width_number_of_particles, height_number_of_particles);
+	slider_number_of_particles->setPosition(pos_x_number_of_particles, pos_y_number_of_particles);
+	slider_number_of_particles->setMinimum(1);
+	slider_number_of_particles->setMaximum(20);
+	slider_number_of_particles->setStep(1);
+	GUI.add(slider_number_of_particles);
 }
