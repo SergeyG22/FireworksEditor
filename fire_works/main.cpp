@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <TGUI/TGUI.hpp>
 #include <list>
 #include <iostream>
@@ -31,11 +32,12 @@ sf::Vector2f get_mouse_coordinate(sf::RenderWindow& window) {
 }
 
 struct ObjectsEntities {
-    sf::RenderWindow window{ sf::VideoMode(1280, 1024), "Fireworks" };
+    sf::RenderWindow window{ sf::VideoMode(1280, 1024), "Fireworks",sf::Style::None };
     tgui::GuiSFML GUI{ window };
     Background background;
     Display_text display_text;
     Window_dialog window_dialog;
+    SoundExplosion sound_explosion;
     Fireball fireball;
     GraphicalDesktopElements graphical_elements;
     Combo_box_color combo_box_color{ GUI };
@@ -136,7 +138,6 @@ int main()
     sf::Clock clock_fps;
     objects_entities.fireworks.push_back(new Flow_fractions(&objects_entities.fractions,color_id,number_of_particles));
     events_called_by_widgets(objects_entities);
-
     while (objects_entities.window.isOpen())
     {
         sf::Event event;
@@ -249,20 +250,20 @@ int main()
                     ++it;
                 }
             }
-
+            
             for (auto it = objects_entities.fireworks.begin(); it != objects_entities.fireworks.end();) {
                 if (!(*it)->generate_flow()) {                  
                     for (int i = 0; i < number_of_lights; i++)
                         objects_entities.explosions.push_back(new Explosion((*it)->get_position(), (*it)->get_color(),0));
                     delete* it;
                     it = objects_entities.fireworks.erase(it);
+                    objects_entities.sound_explosion.sound_play();
                 }
                 else {
                     ++it;
                 }
             }
            
-            
             for (auto it = objects_entities.explosions.begin(); it != objects_entities.explosions.end();) {
                 if (!(*it)->generate_explosion()) {
                     objects_entities.fractions.push_back(new Fractions((*it)->get_position(), (*it)->get_color()));

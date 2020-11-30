@@ -1,6 +1,7 @@
 #pragma once
 #include "gui.h"
 
+extern double number_generator(int, int);
 
 class Fractions {
     sf::Color fractions_color;
@@ -33,12 +34,41 @@ class Explosion {
     float explosion_alpha;
     sf::Color explosion_color;
     sf::Vector2f explosion_position;
-    sf::Vector2f explosion_velocity;
+    sf::Vector2f explosion_velocity;   
 public:
     Explosion(sf::Vector2f, sf::Color,int);
     sf::Color get_color()       const { return explosion_color;     };
     sf::Vector2f get_position() const { return explosion_position;  };
     bool generate_explosion();
+};
+
+class SoundExplosion {
+    sf::SoundBuffer sound_buffer_v1;
+    sf::SoundBuffer sound_buffer_v2;
+    sf::SoundBuffer sound_buffer_v3;
+    sf::SoundBuffer sound_buffer_v4;
+    sf::Sound sound_explosion_v1;
+    sf::Sound sound_explosion_v2;
+    sf::Sound sound_explosion_v3;
+    sf::Sound sound_explosion_v4;
+public:
+    SoundExplosion();
+    void sound_play() {       
+        switch (static_cast<int>(number_generator(1, 5))) {
+        case 1: { sound_explosion_v1.play();
+              break;
+        }
+        case 2: { sound_explosion_v2.play();
+            break;
+        }
+        case 3: { sound_explosion_v3.play();
+            break;
+        }
+        case 4: { sound_explosion_v4.play();
+            break;
+        }        
+      }
+    }
 };
 
 struct Fireball {

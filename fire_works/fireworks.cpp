@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <random>
 #include <list>
 #include <iostream>
@@ -109,7 +110,7 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,int color_id,int
     start_position.x = static_cast<int>(number_generator(100,1180));
     start_position.y = 924;
     flow_fractions_positions = start_position;
-    flow_fractions_velocity = sf::Vector2f(number_generator(1, 5), number_generator(3, 8) * (-1));
+    flow_fractions_velocity = sf::Vector2f(number_generator(1, 10), number_generator(3, 10) * (-1));
     if (flow_fractions_positions.x >= 100)
         flow_fractions_velocity.x = flow_fractions_velocity.x * (-1);
     tact = 0;
@@ -131,7 +132,7 @@ bool Flow_fractions::generate_flow() {
     return true;
 };
 
-Explosion::Explosion(sf::Vector2f position, sf::Color color,int dislocation ) {
+Explosion::Explosion(sf::Vector2f position, sf::Color color,int dislocation ) {  
     explosion_position = position;
     explosion_position.x += dislocation;
     explosion_position.y += dislocation;
@@ -154,7 +155,7 @@ Explosion::Explosion(sf::Vector2f position, sf::Color color,int dislocation ) {
 
 bool Explosion::generate_explosion()
 {
-    if (explosion_color.a - explosion_alpha <= 0 || tact >= 50) {
+    if (explosion_color.a - explosion_alpha <= 0 || tact >= 50) {       
         return false;
     }
     explosion_position = explosion_position + explosion_velocity;
@@ -165,6 +166,19 @@ bool Explosion::generate_explosion()
     tact++;
     return true;
 };
+
+SoundExplosion::SoundExplosion() {
+     if (!sound_buffer_v1.loadFromFile("sounds/explosion_v1.ogg")) { std::cout << "error loading the explosion_v1\n"; }
+     if (!sound_buffer_v2.loadFromFile("sounds/explosion_v2.ogg")) { std::cout << "error loading the explosion_v2\n"; }
+     if (!sound_buffer_v3.loadFromFile("sounds/explosion_v3.ogg")) { std::cout << "error loading the explosion_v3\n"; }
+     if (!sound_buffer_v4.loadFromFile("sounds/explosion_v4.ogg")) { std::cout << "error loading the explosion_v4\n"; }
+     sound_explosion_v1.setBuffer(sound_buffer_v1);
+     sound_explosion_v2.setBuffer(sound_buffer_v2);
+     sound_explosion_v3.setBuffer(sound_buffer_v3);
+     sound_explosion_v4.setBuffer(sound_buffer_v4);
+}
+
+
 
 Fireball::Fireball() {
     fireball_shape.setRadius(3.0);
