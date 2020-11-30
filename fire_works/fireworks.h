@@ -19,9 +19,10 @@ class Flow_fractions {
     sf::Vector2f flow_fractions_velocity;
     sf::Vector2f flow_fractions_positions;   
     std::list<Fractions*>*list_fractions;
+    int number_fractions = 5;
 public:
-    Flow_fractions(std::list<Fractions*>*,sf::RenderWindow&,int);
-    Flow_fractions(std::list<Fractions*>*,int);
+    Flow_fractions(std::list<Fractions*>*,sf::RenderWindow&,int,int);
+    Flow_fractions(std::list<Fractions*>*,int,int);
     sf::Color get_color()       const { return flow_fractions_color; };
     sf::Vector2f get_position() const { return flow_fractions_positions; };
     bool generate_flow();
