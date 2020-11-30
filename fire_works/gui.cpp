@@ -103,13 +103,13 @@ Combo_box_color::Combo_box_color(tgui::GuiSFML&GUI) {
 	combo_box_color->setSize(width_combo_box_color, height_combo_box_color);
 	combo_box_color->setPosition(pos_x_combo_box_color, pos_y_combo_box_color);
 	combo_box_color->setVisible(false);
-	combo_box_color->addItem(L"красный","1");
-	combo_box_color->addItem(L"зеленый", "2");
-	combo_box_color->addItem(L"пурпурный", "3");
-	combo_box_color->addItem(L"бирюзовый", "4");
-	combo_box_color->addItem(L"желтый", "5");
-	combo_box_color->addItem(L"белый", "6");
-	combo_box_color->addItem(L"случайный","7");
+	combo_box_color->addItem(L"красный");
+	combo_box_color->addItem(L"зеленый");
+	combo_box_color->addItem(L"пурпурный");
+	combo_box_color->addItem(L"бирюзовый");
+	combo_box_color->addItem(L"желтый");
+	combo_box_color->addItem(L"белый");
+	combo_box_color->addItem(L"случайный");
 	combo_box_color->setSelectedItem(L"случайный");
 	GUI.add(combo_box_color);
 }
@@ -137,7 +137,7 @@ Slider_number_of_lights::Slider_number_of_lights(tgui::GuiSFML& GUI) {
 	slider_number_of_lights->setSize(width_number_of_lights, height_number_of_lights);
 	slider_number_of_lights->setPosition(pos_x_number_of_lights, pos_y_number_of_lights);
 	slider_number_of_lights->setMinimum(1);
-	slider_number_of_lights->setMaximum(20);
+	slider_number_of_lights->setMaximum(150);
 	slider_number_of_lights->setStep(1);
 	GUI.add(slider_number_of_lights);
 }
@@ -149,7 +149,45 @@ Slider_number_of_particles::Slider_number_of_particles(tgui::GuiSFML& GUI) {
 	slider_number_of_particles->setSize(width_number_of_particles, height_number_of_particles);
 	slider_number_of_particles->setPosition(pos_x_number_of_particles, pos_y_number_of_particles);
 	slider_number_of_particles->setMinimum(1);
-	slider_number_of_particles->setMaximum(20);
+	slider_number_of_particles->setMaximum(15);
 	slider_number_of_particles->setStep(1);
 	GUI.add(slider_number_of_particles);
+}
+
+Label_number_of_lights::Label_number_of_lights(tgui::GuiSFML&GUI) {
+	label_number_of_lights = tgui::Label::create();
+	label_number_of_lights->setVisible(false);
+	label_number_of_lights->setPosition(pos_x_label_number_of_lights, pos_y_label_number_of_lights);
+	label_number_of_lights->setText(L"76 ");
+	label_number_of_lights->setTextSize(20);
+	GUI.add(label_number_of_lights);
+}
+
+Label_number_of_particles::Label_number_of_particles(tgui::GuiSFML& GUI) {
+	label_number_of_particles = tgui::Label::create();
+	label_number_of_particles->setVisible(false);
+	label_number_of_particles->setPosition(pos_x_label_number_of_particles, pos_y_label_number_of_particles);
+	label_number_of_particles->setText(L"47 ");
+	label_number_of_particles->setTextSize(20);
+	GUI.add(label_number_of_particles);
+}
+
+Button_reset_scene::Button_reset_scene(tgui::GuiSFML& GUI) {
+	button_reset_scene = tgui::Button::create();
+	button_reset_scene->setVisible(false);
+	button_reset_scene->setTextSize(20);
+	button_reset_scene->setPosition(pos_x_button_reset_scene, pos_y_button_reset_scene);
+	button_reset_scene->setText(L"Удалить фейрверки");
+	button_reset_scene->setSize(width_button_reset_scene, height_button_reset_scene);
+	GUI.add(button_reset_scene);
+}
+
+Button_delete_info::Button_delete_info(tgui::GuiSFML& GUI) {
+	button_delete_info = tgui::Button::create();
+	button_delete_info->setVisible(false);
+	button_delete_info->setTextSize(20);
+	button_delete_info->setPosition(pos_x_button_delete_info, pos_y_button_delete_info);
+	button_delete_info->setText(L"Удалить надписи");
+	button_delete_info->setSize(width_button_delete_info, height_button_delete_info);
+	GUI.add(button_delete_info);
 }

@@ -9,6 +9,8 @@
 extern double number_generator(int, int);
 const int time_scene = 20;
 int fps = 0;
+int color_id = 6;
+int number_of_fireworks = 0;
 sf::Color color[] = { sf::Color::Red, sf::Color::Green, sf::Color::Blue, sf::Color::Magenta, sf::Color::Cyan, 
                       sf::Color::Yellow, sf::Color::White};
 
@@ -37,7 +39,39 @@ struct ObjectsEntities {
     Combo_box_number_of_fireworks combo_box_number_of_fireworks{ GUI };
     Slider_number_of_lights slider_number_of_lights { GUI };
     Slider_number_of_particles slider_number_of_particles{ GUI };
+    Label_number_of_lights label_number_of_light{ GUI};
+    Label_number_of_particles label_number_of_particles{ GUI };
+    Button_reset_scene button_reset_scene{ GUI };
+    Button_delete_info button_delete_info{ GUI };
 };
+
+void visibility_of_widgets(ObjectsEntities& widget, bool state) {
+    widget.button_delete_info.button_delete_info->setVisible(state);
+    widget.button_reset_scene.button_reset_scene->setVisible(state);
+    widget.combo_box_color.combo_box_color->setVisible(state);
+    widget.combo_box_number_of_fireworks.combo_box_number_of_fireworks->setVisible(state);
+    widget.slider_number_of_lights.slider_number_of_lights->setVisible(state);
+    widget.slider_number_of_particles.slider_number_of_particles->setVisible(state);
+    widget.label_number_of_light.label_number_of_lights->setVisible(state);
+    widget.label_number_of_particles.label_number_of_particles->setVisible(state);
+    widget.graphical_elements.show_window_of_widgets(state);
+}
+
+void get_color_id(ObjectsEntities& widgets) {
+    color_id = widgets.combo_box_color.combo_box_color->getSelectedItemIndex();
+}
+
+void get_number_of_fireworks(ObjectsEntities& widgets) {
+    number_of_fireworks = widgets.combo_box_number_of_fireworks.combo_box_number_of_fireworks->getSelectedItemIndex();
+}
+
+
+
+void events_called_by_widgets(ObjectsEntities& widgets) {
+    widgets.combo_box_color.combo_box_color->onItemSelect(get_color_id,std::ref(widgets));
+    widgets.combo_box_number_of_fireworks.combo_box_number_of_fireworks->onItemSelect(get_number_of_fireworks,std::ref(widgets));
+}
+
 
 
 
@@ -51,7 +85,8 @@ int main()
     sf::Clock event_timer;
     sf::Clock timer_starts_firework;
     sf::Clock clock_fps;
-    fireworks.push_back(new Flow_fractions(&fractions));
+    fireworks.push_back(new Flow_fractions(&fractions,color_id));
+    events_called_by_widgets(objects_entities);
 
     while (objects_entities.window.isOpen())
     {
@@ -61,7 +96,7 @@ int main()
             objects_entities.GUI.handleEvent(event);
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.key.code == sf::Mouse::Left) {                   
-                    fireworks.push_back(new Flow_fractions(&fractions, objects_entities.window));
+                    fireworks.push_back(new Flow_fractions(&fractions, objects_entities.window,color_id));
                 }
             }
 
@@ -97,11 +132,7 @@ int main()
                 if (event.type == sf::Event::MouseButtonPressed) {
                     if (event.key.code == sf::Mouse::Left) {
                         if (objects_entities.graphical_elements.get_sprite_button_open().getGlobalBounds().contains(get_mouse_coordinate(objects_entities.window).x, get_mouse_coordinate(objects_entities.window).y)) {
-                            objects_entities.combo_box_color.combo_box_color->setVisible(true);
-                            objects_entities.combo_box_number_of_fireworks.combo_box_number_of_fireworks->setVisible(true);
-                            objects_entities.slider_number_of_lights.slider_number_of_lights->setVisible(true);
-                            objects_entities.slider_number_of_particles.slider_number_of_particles->setVisible(true);
-                            objects_entities.graphical_elements.show_window_of_widgets(true);
+                            visibility_of_widgets(objects_entities, true);
                             objects_entities.graphical_elements.set_state_window(false);
                         }
                     }
@@ -111,11 +142,7 @@ int main()
                 if (event.type == sf::Event::MouseButtonPressed) {
                     if (event.key.code == sf::Mouse::Left) {
                         if (objects_entities.graphical_elements.get_sprite_button_close().getGlobalBounds().contains(get_mouse_coordinate(objects_entities.window).x, get_mouse_coordinate(objects_entities.window).y)) {
-                            objects_entities.combo_box_color.combo_box_color->setVisible(false);
-                            objects_entities.combo_box_number_of_fireworks.combo_box_number_of_fireworks->setVisible(false);
-                            objects_entities.slider_number_of_lights.slider_number_of_lights->setVisible(false);
-                            objects_entities.slider_number_of_particles.slider_number_of_particles->setVisible(false);
-                            objects_entities.graphical_elements.show_window_of_widgets(false);
+                            visibility_of_widgets(objects_entities, false);
                             objects_entities.graphical_elements.set_state_window(true);
                         }
                     }
@@ -124,11 +151,7 @@ int main()
 
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Escape) {
-                    objects_entities.combo_box_color.combo_box_color->setVisible(false);
-                    objects_entities.combo_box_number_of_fireworks.combo_box_number_of_fireworks->setVisible(false);
-                    objects_entities.slider_number_of_lights.slider_number_of_lights->setVisible(false);
-                    objects_entities.slider_number_of_particles.slider_number_of_particles->setVisible(false);
-                    objects_entities.graphical_elements.show_window_of_widgets(false);
+                    visibility_of_widgets(objects_entities, false);
                     objects_entities.graphical_elements.set_state_window(true);
                 }
             }
@@ -156,10 +179,12 @@ int main()
         }
 
 
-     //   if (timer_starts_firework.getElapsedTime().asSeconds() > 10) {
-     //       fireworks.push_back(new Flow_fractions(&fractions));
-     //       timer_starts_firework.restart();
-     //   }
+        if (timer_starts_firework.getElapsedTime().asSeconds() > 10) {
+            for (int i = 0; i < number_of_fireworks+1; ++i) {
+                fireworks.push_back(new Flow_fractions(&fractions, color_id));
+            }
+            timer_starts_firework.restart();
+        }
 
         if (event_timer.getElapsedTime().asMilliseconds() >= time_scene)
         {
@@ -175,7 +200,7 @@ int main()
 
             for (auto it = fireworks.begin(); it != fireworks.end();) {
                 if (!(*it)->generate_flow()) {
-                    int number_of_lights = static_cast<int>(number_generator(10,20));
+                    int number_of_lights = 150;//static_cast<int>(number_generator(10,20)); // Fireball
                     for (int i = 0; i < number_of_lights; i++)
                         explosions.push_back(new Explosion((*it)->get_position(), (*it)->get_color(),0));
                     delete* it;

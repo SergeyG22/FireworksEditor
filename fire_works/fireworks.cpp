@@ -29,8 +29,37 @@ bool Fractions::generate_fractions() {
 };
 
 
-Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,sf::RenderWindow& window) {
-    flow_fractions_color = sf::Color(number_generator(0,256), number_generator(0, 256), number_generator(0, 256));
+Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,sf::RenderWindow& window ,int color_id) {
+    switch (color_id) {
+    case 0: {
+        flow_fractions_color = sf::Color(255, 0, 0);
+        break;
+    }
+    case 1: {
+         flow_fractions_color = sf::Color(0,255,0);
+         break;
+    }
+    case 2: {
+        flow_fractions_color = sf::Color(128, 0, 128);
+        break;
+    }
+    case 3: {
+        flow_fractions_color = sf::Color(48, 213, 200);
+        break;
+    }
+    case 4: {
+        flow_fractions_color = sf::Color(255, 255, 0);
+        break;
+    }
+    case 5: {
+        flow_fractions_color = sf::Color(255, 250, 250);
+        break;
+    }
+    case 6: {
+        flow_fractions_color = sf::Color(number_generator(0, 256), number_generator(0, 256), number_generator(0, 256));
+        break;
+    }
+    }
     sf::Vector2f mouse_position;
     mouse_position.x = sf::Mouse::getPosition(window).x;
     mouse_position.y = sf::Mouse::getPosition(window).y;    
@@ -43,8 +72,37 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,sf::RenderWindow
        
 };
 
-Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions) {
-    flow_fractions_color = sf::Color(number_generator(0, 256), number_generator(0, 256), number_generator(0, 256));
+Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,int color_id) {
+    switch (color_id) {
+    case 0: {
+        flow_fractions_color = sf::Color(255, 0, 0);
+        break;
+    }
+    case 1: {
+        flow_fractions_color = sf::Color(0, 255, 0);
+        break;
+    }
+    case 2: {
+        flow_fractions_color = sf::Color(128, 0, 128);
+        break;
+    }
+    case 3: {
+        flow_fractions_color = sf::Color(48, 213, 200);
+        break;
+    }
+    case 4: {
+        flow_fractions_color = sf::Color(255, 255, 0);
+        break;
+    }
+    case 5: {
+        flow_fractions_color = sf::Color(255, 250, 250);
+        break;
+    }
+    case 6: {
+        flow_fractions_color = sf::Color(number_generator(0, 256), number_generator(0, 256), number_generator(0, 256));
+        break;
+    }
+    }
     sf::Vector2f start_position;
     start_position.x = static_cast<int>(number_generator(100,1180));
     start_position.y = 924;
@@ -61,7 +119,7 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions) {
 
 bool Flow_fractions::generate_flow() {
     flow_fractions_positions = flow_fractions_positions + flow_fractions_velocity;
-    int number_fractions = 5;
+    int number_fractions = 5; // FRACTIONS
     for (int y = 0; y < flow_fractions_velocity.y * (-1); ++y)
         for ( int i = 0; i < number_fractions; ++i)
             list_fractions->push_back(new Fractions(sf::Vector2f(get_position().x, get_position().y + y), get_color()));

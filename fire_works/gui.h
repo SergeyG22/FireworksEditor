@@ -1,5 +1,6 @@
 #pragma once
 #include <TGUI/TGUI.hpp>
+#include <TGUI/TextStyle.hpp>
 
 class Background: public sf::Drawable {
 	sf::Sprite background_sprite;
@@ -84,20 +85,58 @@ struct Combo_box_number_of_fireworks{
 
 struct Slider_number_of_lights {
 	tgui::Slider::Ptr slider_number_of_lights;
-	tgui::Layout width_number_of_lights = 250;
+	tgui::Layout width_number_of_lights = 230;
 	tgui::Layout height_number_of_lights = 15;
-	tgui::Layout pos_x_number_of_lights = 70;
-	tgui::Layout pos_y_number_of_lights = 380;
+	tgui::Layout pos_x_number_of_lights = 105;
+	tgui::Layout pos_y_number_of_lights = 375;
 	tgui::Theme theme{ "themes/Black.txt" };
 	Slider_number_of_lights(tgui::GuiSFML&);
 };
 
 struct Slider_number_of_particles {
 	tgui::Slider::Ptr slider_number_of_particles;
-	tgui::Layout width_number_of_particles = 250;
+	tgui::Layout width_number_of_particles = 230;
 	tgui::Layout height_number_of_particles = 15;
-	tgui::Layout pos_x_number_of_particles = 70;
-	tgui::Layout pos_y_number_of_particles = 430;
+	tgui::Layout pos_x_number_of_particles = 105;
+	tgui::Layout pos_y_number_of_particles = 425;
 	tgui::Theme theme{ "themes/Black.txt" };
 	Slider_number_of_particles(tgui::GuiSFML&);
+};
+
+struct Label_number_of_lights {
+	tgui::Label::Ptr label_number_of_lights;
+	tgui::Layout width_label_number_of_lights = 310;
+	tgui::Layout height_label_number_of_lights = 150;
+	tgui::Layout pos_x_label_number_of_lights = 280;
+	tgui::Layout pos_y_label_number_of_lights = 465;
+	tgui::Theme theme{ "themes/Black.txt" };
+	Label_number_of_lights(tgui::GuiSFML&);
+};
+
+struct Label_number_of_particles {
+	tgui::Label::Ptr label_number_of_particles;
+	tgui::Layout width_label_number_of_particles = 310;
+	tgui::Layout height_label_number_of_particles = 150;
+	tgui::Layout pos_x_label_number_of_particles = 280;
+	tgui::Layout pos_y_label_number_of_particles = 495;
+	tgui::Theme theme{ "themes/Black.txt" };
+	Label_number_of_particles(tgui::GuiSFML&);
+};
+
+struct Button_reset_scene {
+	tgui::Button::Ptr button_reset_scene;
+	tgui::Layout width_button_reset_scene = 240;
+	tgui::Layout height_button_reset_scene = 31;
+	tgui::Layout pos_x_button_reset_scene = 70;
+	tgui::Layout pos_y_button_reset_scene = 550;
+	Button_reset_scene(tgui::GuiSFML&);
+};
+
+struct Button_delete_info {
+	tgui::Button::Ptr button_delete_info;
+	tgui::Layout width_button_delete_info = 240;
+	tgui::Layout height_button_delete_info = 31;
+	tgui::Layout pos_x_button_delete_info = 70;
+	tgui::Layout pos_y_button_delete_info = 600;
+	Button_delete_info(tgui::GuiSFML&);
 };
