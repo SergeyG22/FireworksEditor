@@ -22,9 +22,9 @@ Display_text::Display_text() {
 	fireworks_text.setFont(font);
 	fractions_text.setPosition(0,30);
 	fireworks_text.setPosition(0,60);
-	fps_text.setFillColor(sf::Color::Red);
-	fractions_text.setFillColor(sf::Color::Red);
-	fireworks_text.setFillColor(sf::Color::Red);
+	fps_text.setFillColor(sf::Color::Green);
+	fractions_text.setFillColor(sf::Color::Green);
+	fireworks_text.setFillColor(sf::Color::Green);
 }
 
 void Display_text::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -217,7 +217,7 @@ Button_hide_info::Button_hide_info(tgui::GuiSFML& GUI) {
 	button_hide_info->setVisible(false);
 	button_hide_info->setTextSize(20);
 	button_hide_info->setPosition(pos_x_button_hide_info, pos_y_button_hide_info);
-	button_hide_info->setText(L"Удалить надписи");
+	button_hide_info->setText(L"Cкрыть надписи");
 	button_hide_info->setSize(width_button_hide_info, height_button_hide_info);
 	GUI.add(button_hide_info);
 }

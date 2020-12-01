@@ -122,9 +122,10 @@ Flow_fractions::Flow_fractions(std::list<Fractions*>* fractions,int color_id,int
 
 bool Flow_fractions::generate_flow() {
     flow_fractions_positions = flow_fractions_positions + flow_fractions_velocity;
-    for (int y = 0; y < flow_fractions_velocity.y * (-1); ++y)
-        for ( int i = 0; i < number_fractions; ++i)
+    for (int y = 0; y < flow_fractions_velocity.y * (-1); ++y) {
+        for (int i = 0; i < number_fractions; ++i)
             list_fractions->push_back(new Fractions(sf::Vector2f(get_position().x, get_position().y + y), get_color()));
+    }
     if (tact >= 50) {
         return false;
     }
