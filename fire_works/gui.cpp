@@ -3,7 +3,7 @@
 #include "gui.h"
 
 Background::Background() {
-	if (!background_texture.loadFromFile("images/night_city.png")) { 
+	if (!background_texture.loadFromFile("images/night_city.jpg")) { 
 		std::cout << "error loading the texture\n";
 	}
 	background_sprite.setTexture(background_texture);
