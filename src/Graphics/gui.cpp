@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "gui.h"
+#include "../../include/gui.h"
 
 Background::Background() {
 	if (!background_texture.loadFromFile("images/night_city.jpg")) { 
@@ -98,7 +98,7 @@ void GraphicalDesktopElements::draw(sf::RenderTarget& target, sf::RenderStates s
 }
 
 
-Combo_box_color::Combo_box_color(tgui::GuiSFML&GUI) {
+Combo_box_color::Combo_box_color(tgui::Gui&GUI) {
 	combo_box_color = tgui::ComboBox::create();
 	combo_box_color->setRenderer(theme.getRenderer("ComboBox"));
 	combo_box_color->setTextSize(20);
@@ -116,7 +116,7 @@ Combo_box_color::Combo_box_color(tgui::GuiSFML&GUI) {
 	GUI.add(combo_box_color);
 }
 
-Combo_box_number_of_fireworks::Combo_box_number_of_fireworks(tgui::GuiSFML& GUI) {
+Combo_box_number_of_fireworks::Combo_box_number_of_fireworks(tgui::Gui& GUI) {
 	combo_box_number_of_fireworks = tgui::ComboBox::create();
 	combo_box_number_of_fireworks->setRenderer(theme.getRenderer("ComboBox"));
 	combo_box_number_of_fireworks->setTextSize(20);
@@ -132,7 +132,7 @@ Combo_box_number_of_fireworks::Combo_box_number_of_fireworks(tgui::GuiSFML& GUI)
 	GUI.add(combo_box_number_of_fireworks);
 }
 
-Slider_number_of_lights::Slider_number_of_lights(tgui::GuiSFML& GUI) {
+Slider_number_of_lights::Slider_number_of_lights(tgui::Gui& GUI) {
 	slider_number_of_lights = tgui::Slider::create();
 	slider_number_of_lights->setRenderer(theme.getRenderer("Slider"));
 	slider_number_of_lights->setVisible(false);
@@ -145,7 +145,7 @@ Slider_number_of_lights::Slider_number_of_lights(tgui::GuiSFML& GUI) {
 	GUI.add(slider_number_of_lights);
 }
 
-Slider_number_of_particles::Slider_number_of_particles(tgui::GuiSFML& GUI) {
+Slider_number_of_particles::Slider_number_of_particles(tgui::Gui& GUI) {
 	slider_number_of_particles = tgui::Slider::create();
 	slider_number_of_particles->setRenderer(theme.getRenderer("Slider"));
 	slider_number_of_particles->setVisible(false);
@@ -158,7 +158,7 @@ Slider_number_of_particles::Slider_number_of_particles(tgui::GuiSFML& GUI) {
 	GUI.add(slider_number_of_particles);
 }
 
-Slider_start_of_fireworks::Slider_start_of_fireworks(tgui::GuiSFML& GUI) {
+Slider_start_of_fireworks::Slider_start_of_fireworks(tgui::Gui& GUI) {
 	slider_start_of_fireworks = tgui::Slider::create();
 	slider_start_of_fireworks->setRenderer(theme.getRenderer("Slider"));
 	slider_start_of_fireworks->setVisible(false);
@@ -173,7 +173,7 @@ Slider_start_of_fireworks::Slider_start_of_fireworks(tgui::GuiSFML& GUI) {
 
 
 
-Label_number_of_lights::Label_number_of_lights(tgui::GuiSFML&GUI) {
+Label_number_of_lights::Label_number_of_lights(tgui::Gui&GUI) {
 	label_number_of_lights = tgui::Label::create();
 	label_number_of_lights->setVisible(false);
 	label_number_of_lights->setPosition(pos_x_label_number_of_lights, pos_y_label_number_of_lights);
@@ -182,7 +182,7 @@ Label_number_of_lights::Label_number_of_lights(tgui::GuiSFML&GUI) {
 	GUI.add(label_number_of_lights);
 }
 
-Label_number_of_particles::Label_number_of_particles(tgui::GuiSFML& GUI) {
+Label_number_of_particles::Label_number_of_particles(tgui::Gui& GUI) {
 	label_number_of_particles = tgui::Label::create();
 	label_number_of_particles->setVisible(false);
 	label_number_of_particles->setPosition(pos_x_label_number_of_particles, pos_y_label_number_of_particles);
@@ -191,7 +191,7 @@ Label_number_of_particles::Label_number_of_particles(tgui::GuiSFML& GUI) {
 	GUI.add(label_number_of_particles);
 }
 
-Label_number_of_seconds::Label_number_of_seconds(tgui::GuiSFML& GUI) {
+Label_number_of_seconds::Label_number_of_seconds(tgui::Gui& GUI) {
 	label_number_of_second = tgui::Label::create();
 	label_number_of_second->setVisible(false);
 	label_number_of_second->setPosition(pos_x_label_number_of_second, pos_y_label_number_of_second);
@@ -202,7 +202,7 @@ Label_number_of_seconds::Label_number_of_seconds(tgui::GuiSFML& GUI) {
 
 
 
-Button_reset_scene::Button_reset_scene(tgui::GuiSFML& GUI) {
+Button_reset_scene::Button_reset_scene(tgui::Gui& GUI) {
 	button_reset_scene = tgui::Button::create();
 	button_reset_scene->setVisible(false);
 	button_reset_scene->setTextSize(20);
@@ -212,7 +212,7 @@ Button_reset_scene::Button_reset_scene(tgui::GuiSFML& GUI) {
 	GUI.add(button_reset_scene);
 }
 
-Button_hide_info::Button_hide_info(tgui::GuiSFML& GUI) {
+Button_hide_info::Button_hide_info(tgui::Gui& GUI) {
 	button_hide_info = tgui::Button::create();
 	button_hide_info->setVisible(false);
 	button_hide_info->setTextSize(20);

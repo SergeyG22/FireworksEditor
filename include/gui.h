@@ -1,6 +1,8 @@
 #pragma once
-#include <TGUI/TGUI.hpp>
-#include <TGUI/TextStyle.hpp>
+#include <../../tgui-src/include/TGUI/TGUI.hpp>
+#include <../../tgui-src/include/TGUI/TextStyle.hpp>
+//#include <TGUI/TGUI.hpp>
+//#include <TGUI/TextStyle.hpp>
 
 class Background: public sf::Drawable {
 	sf::Sprite background_sprite;
@@ -73,7 +75,7 @@ struct Combo_box_color{
 	tgui::Layout pos_x_combo_box_color = 53;
 	tgui::Layout pos_y_combo_box_color = 260;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Combo_box_color(tgui::GuiSFML&);
+	Combo_box_color(tgui::Gui&);
 };
 
 struct Combo_box_number_of_fireworks{
@@ -83,7 +85,7 @@ struct Combo_box_number_of_fireworks{
 	tgui::Layout pos_x_combo_box_number_of_fireworks = 53;
 	tgui::Layout pos_y_combo_box_number_of_fireworks = 310;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Combo_box_number_of_fireworks(tgui::GuiSFML&);
+	Combo_box_number_of_fireworks(tgui::Gui&);
 };
 
 struct Slider_number_of_lights {
@@ -93,7 +95,7 @@ struct Slider_number_of_lights {
 	tgui::Layout pos_x_number_of_lights = 105;
 	tgui::Layout pos_y_number_of_lights = 375;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Slider_number_of_lights(tgui::GuiSFML&);
+	Slider_number_of_lights(tgui::Gui&);
 };
 
 struct Slider_number_of_particles {
@@ -103,7 +105,7 @@ struct Slider_number_of_particles {
 	tgui::Layout pos_x_number_of_particles = 105;
 	tgui::Layout pos_y_number_of_particles = 425;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Slider_number_of_particles(tgui::GuiSFML&);
+	Slider_number_of_particles(tgui::Gui&);
 };
 
 struct Slider_start_of_fireworks {
@@ -113,7 +115,7 @@ struct Slider_start_of_fireworks {
 	tgui::Layout pos_x_start_of_fireworks = 105;
 	tgui::Layout pos_y_start_of_fireworks = 475;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Slider_start_of_fireworks(tgui::GuiSFML&);
+	Slider_start_of_fireworks(tgui::Gui&);
 };
 
 
@@ -125,7 +127,7 @@ struct Label_number_of_lights {
 	tgui::Layout pos_x_label_number_of_lights = 290;
 	tgui::Layout pos_y_label_number_of_lights = 512;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Label_number_of_lights(tgui::GuiSFML&);
+	Label_number_of_lights(tgui::Gui&);
 };
 
 struct Label_number_of_particles {
@@ -135,7 +137,7 @@ struct Label_number_of_particles {
 	tgui::Layout pos_x_label_number_of_particles = 290;
 	tgui::Layout pos_y_label_number_of_particles = 542;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Label_number_of_particles(tgui::GuiSFML&);
+	Label_number_of_particles(tgui::Gui&);
 };
 
 struct Label_number_of_seconds {
@@ -145,7 +147,7 @@ struct Label_number_of_seconds {
 	tgui::Layout pos_x_label_number_of_second = 290;
 	tgui::Layout pos_y_label_number_of_second = 573;
 	tgui::Theme theme{ "themes/Black.txt" };
-	Label_number_of_seconds(tgui::GuiSFML&);
+	Label_number_of_seconds(tgui::Gui&);
 };
 
 
@@ -156,7 +158,7 @@ struct Button_reset_scene {
 	tgui::Layout height_button_reset_scene = 31;
 	tgui::Layout pos_x_button_reset_scene = 70;
 	tgui::Layout pos_y_button_reset_scene = 620;
-	Button_reset_scene(tgui::GuiSFML&);
+	Button_reset_scene(tgui::Gui&);
 };
 
 struct Button_hide_info {
@@ -165,5 +167,5 @@ struct Button_hide_info {
 	tgui::Layout height_button_hide_info = 31;
 	tgui::Layout pos_x_button_hide_info = 70;
 	tgui::Layout pos_y_button_hide_info = 670;
-	Button_hide_info(tgui::GuiSFML&);
+	Button_hide_info(tgui::Gui&);
 };

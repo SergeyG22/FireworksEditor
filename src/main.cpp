@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <TGUI/TGUI.hpp>
+#include <../../tgui-src/include/TGUI/TGUI.hpp>
 #include <list>
 #include <iostream>
-#include "fireworks.h"
-#include "gui.h"
+#include "../include/fireworks.h"
+#include "../include/gui.h"
 
 
 extern double number_generator(int, int);
@@ -32,8 +32,10 @@ sf::Vector2f get_mouse_coordinate(sf::RenderWindow& window) {
 }
 
 struct ObjectsEntities {
+
+    ObjectsEntities() = default;
     sf::RenderWindow window{ sf::VideoMode(1280, 1024), "Fireworks",sf::Style::None };
-    tgui::GuiSFML GUI{ window };
+    tgui::Gui GUI{ window };
     Background background;
     Display_text display_text;
     Window_dialog window_dialog;
@@ -80,19 +82,19 @@ void get_number_of_fireworks(ObjectsEntities& widgets) {
 
 void set_number_of_particles(ObjectsEntities& widgets) {
     number_of_particles = widgets.slider_number_of_particles.slider_number_of_particles->getValue();
-    tgui::String str_particles(number_of_particles);
+    tgui::String str_particles(tgui::to_string(number_of_particles));
     widgets.label_number_of_particles.label_number_of_particles->setText(str_particles);
 }
 
 void set_number_of_lights(ObjectsEntities& widgets) {
     number_of_lights = widgets.slider_number_of_lights.slider_number_of_lights->getValue();
-    tgui::String str_lights(number_of_lights);
+    tgui::String str_lights(tgui::to_string(number_of_lights));
     widgets.label_number_of_light.label_number_of_lights->setText(str_lights);
 }
 
 void set_start_interval(ObjectsEntities& widgets) {
     timer_start = widgets.slider_start_of_fireworks.slider_start_of_fireworks->getValue();
-    tgui::String str_time(timer_start);
+    tgui::String str_time(tgui::to_string(timer_start));
     widgets.label_number_of_seconds.label_number_of_second->setText(str_time);
 }
 

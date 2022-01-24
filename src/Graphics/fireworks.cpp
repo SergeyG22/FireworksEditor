@@ -3,9 +3,9 @@
 #include <random>
 #include <list>
 #include <iostream>
-#include "fireworks.h"
-#include "number_generator.h"
-#include "gui.h"
+#include "../../include/fireworks.h"
+#include "../../include/number_generator.h"
+#include "../../include/gui.h"
 
 extern double number_generator(int,int);
 const int width_window = 1024;
