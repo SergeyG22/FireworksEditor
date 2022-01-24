@@ -33,3 +33,5 @@ cmake ..
  [Combobox number of fireworks] - select number of fireworks<br>
 
 ### Preview
+
+![hippo](https://github.com/SergeyG22/FireworksEditor/blob/master/docs/animation/animation.gif)
